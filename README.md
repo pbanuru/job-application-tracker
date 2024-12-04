@@ -1,57 +1,42 @@
-# Job Application Helper Chrome Extension
+# JobCopy Chrome Extension
 
-A Chrome extension that helps you extract and analyze job posting information directly from job listing pages.
+A simple Chrome extension that extracts job titles and company names from job listing pages and copies them to your clipboard one after another. Perfect for quickly logging job applications when used with PasteQueue on macOS.
 
-## Features
+## What it Does
 
-- One-click job information extraction
-- Clean popup interface
-- Works on any webpage with job listings
-- Automatic content parsing and analysis
+1. Extracts the current page content and URL
+2. Uses GPT-4-mini to identify the job title and company name
+3. Copies them to your clipboard: copy1 = company name, copy2 = job title, copy3 = job posting URL
+
+## Recommended Setup
+
+- Install [PasteQueue](https://apprywhere.com/paste-queue.html#/) on your Mac
+- Configure PasteQueue to paste tab-separated values into separate columns - for when you paste the clipboard contents into a spreadsheet
+- This combination lets you quickly build a spreadsheet of jobs you're applying to
 
 ## Installation
 
-1. Clone this repository or download the source code
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right corner
-4. Click "Load unpacked" and select the extension directory
+1. Download this repository
+2. Open Chrome and go to `chrome://extensions/`
+3. Enable "Developer mode" (top right)
+4. Click "Load unpacked" and select this directory
 
 ## Usage
 
-1. Navigate to any job posting page
-2. Click the extension icon in your Chrome toolbar
-3. Click the "Extract Job Info" button in the popup
-4. View the extracted job information and analysis
+1. Visit any job posting page
+2. Click the extension icon
+3. Click "Extract Job Info"
+4. The company name, job title, and job posting URL will be copied to your clipboard
+5. Open your spreadsheet and paste the clipboard contents with your keyboard shortcuts set up in PasteQueue
 
-## Project Structure
+## Technical Details
 
-- `manifest.json` - Extension configuration and permissions
-- `popup.html` - Extension popup interface
-- `popup.js` - Popup functionality and user interaction
-- `content.js` - Content script for webpage interaction
-- `background.js` - Background service worker for extension functionality
+The extension uses:
 
-## Permissions
-
-This extension requires the following permissions:
-
-- `activeTab` - To access the current tab's content
-- `storage` - To store extension data
-- `tabs` - To interact with browser tabs
-- `scripting` - To inject and execute scripts
-
-## Development
-
-To modify the extension:
-
-1. Make your changes to the source files
-2. Reload the extension in `chrome://extensions/`
-3. Test your changes
-
-## Contributing
-
-Feel free to submit issues and pull requests for any improvements or bug fixes.
+- Chrome's scripting API to extract page content
+- GPT-4-mini for accurate job info extraction
+- Background scripts for clipboard handling
 
 ## License
 
-This project is open source and available under the MIT License.
+MIT License - See LICENSE file for details
